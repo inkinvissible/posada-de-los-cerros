@@ -34161,3 +34161,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       font-weight: 500;
       
     }
+.brand-name{
+	font-size: 48px;
+	font-weight: 500;
+	color: #000000;
+}

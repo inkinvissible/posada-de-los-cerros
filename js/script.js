@@ -1515,32 +1515,136 @@ $(function () {
 			}
 		}
 	}
-	
 
+
+	// javascript
 	/**
 	 * Bootstrap Date time picker
+	 * Alternativa: forzar visualización en español con Intl tras la selección.
 	 */
 	if (plugins.bootstrapDateTimePicker.length) {
-		var i;
-		for (i = 0; i < plugins.bootstrapDateTimePicker.length; i++) {
+		// Inicializa el picker como siempre (sin depender de locale)
+		for (var i = 0; i < plugins.bootstrapDateTimePicker.length; i++) {
 			var $dateTimePicker = $(plugins.bootstrapDateTimePicker[i]);
-			var options = {};
+			var type = $dateTimePicker.attr('data-time-picker');
 
-			options['format'] = 'dddd DD MMMM YYYY - HH:mm';
-			if ($dateTimePicker.attr("data-time-picker") == "date") {
-				options['format'] = 'dddd DD MMMM YYYY';
-				options['minDate'] = new Date();
-			} else if ($dateTimePicker.attr("data-time-picker") == "time") {
-				options['format'] = 'HH:mm';
+			var options = {
+				format: 'dddd DD MMMM YYYY - HH:mm',
+				time: type !== 'date',
+				date: type !== 'time',
+				shortTime: true,
+				weekStart: 1,
+				// Textos del UI
+				cancelText: 'Cancelar',
+				okText: 'Aceptar',
+				clearText: 'Limpiar'
+			};
+
+			if (type === 'date') {
+				options.format = 'dddd DD MMMM YYYY';
+				options.minDate = new Date();
+			} else if (type === 'time') {
+				options.format = 'HH:mm';
 			}
-
-			options["time"] = ($dateTimePicker.attr("data-time-picker") != "date");
-			options["date"] = ($dateTimePicker.attr("data-time-picker") != "time");
-			options["shortTime"] = true;
 
 			$dateTimePicker.bootstrapMaterialDatePicker(options);
 		}
+
+		// --- Fallback de formateo a español con Intl ---
+		function toDate(value) {
+			if (!value) return null;
+			var v = String(value).trim();
+
+			// ISO yyyy-mm-dd o yyyy-mm-ddTHH:mm
+			if (/^\d{4}-\d{2}-\d{2}/.test(v)) {
+				var dIso = new Date(v);
+				return isNaN(dIso) ? null : dIso;
+			}
+
+			// dd/mm/yyyy [HH:mm]
+			var m1 = v.match(/^(\d{2})[\/-](\d{2})[\/-](\d{4})(?:\s+(\d{2}):(\d{2}))?$/);
+			if (m1) {
+				var dd = parseInt(m1[1], 10);
+				var mm = parseInt(m1[2], 10) - 1;
+				var yyyy = parseInt(m1[3], 10);
+				var hh = m1[4] ? parseInt(m1[4], 10) : 0;
+				var mi = m1[5] ? parseInt(m1[5], 10) : 0;
+				var dLoc = new Date(yyyy, mm, dd, hh, mi, 0);
+				return isNaN(dLoc) ? null : dLoc;
+			}
+
+			// Intento genérico (maneja textos en inglés: Thursday, September 5, 2025 13:45)
+			var d = new Date(v);
+			return isNaN(d) ? null : d;
+		}
+
+		function formatSpanishDate(d, includeTime) {
+			var fecha = new Intl.DateTimeFormat('es-AR', {
+				weekday: 'long',
+				day: '2-digit',
+				month: 'long',
+				year: 'numeric'
+			}).format(d);
+
+			if (!includeTime) return fecha;
+
+			var hora = new Intl.DateTimeFormat('es-AR', {
+				hour: '2-digit',
+				minute: '2-digit',
+				hour12: false
+			}).format(d);
+
+			return fecha + ' - ' + hora;
+		}
+
+		function applyEsFormatToInput(input) {
+			var type = input.getAttribute('data-time-picker') || '';
+			var includeTime = type !== 'date' && type !== 'time' ? true : (type === 'time' ? true : false);
+
+			// No re-formatear valores ya en español para evitar bucles
+			var v = input.value.trim();
+			if (!v) return;
+
+			// Si ya contiene meses/días en español, no tocar
+			if (/[áéíóúñ]|lunes|martes|miércoles|jueves|viernes|sábado|domingo|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre/i.test(v)) {
+				return;
+			}
+
+			var d = toDate(v);
+			if (!d) return;
+
+			// Guarda el valor crudo por si lo necesitás
+			input.dataset.raw = v;
+
+			// Si el tipo es "time", solo hora
+			if (type === 'time') {
+				var hora = new Intl.DateTimeFormat('es-AR', {
+					hour: '2-digit',
+					minute: '2-digit',
+					hour12: false
+				}).format(d);
+				input.value = hora;
+				return;
+			}
+
+			input.value = formatSpanishDate(d, includeTime);
+		}
+
+		// Escuchar cambios del picker y formatear a español
+		plugins.bootstrapDateTimePicker.each(function () {
+			var input = this;
+
+			// Al cambiar por el picker
+			$(input).on('change', function () {
+				applyEsFormatToInput(input);
+			});
+
+			// Formateo inicial si ya viene con valor
+			applyEsFormatToInput(input);
+		});
 	}
+
+
 
 
 

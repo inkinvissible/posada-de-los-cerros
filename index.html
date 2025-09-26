@@ -27,7 +27,14 @@
 
     html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
         display: block;
-    }</style>
+    }
+
+    .hotel-booking-form .button {
+        margin-top: 10px;
+    }
+
+
+    </style>
     
 </head>
 <body>
@@ -86,7 +93,7 @@
                 <div class="rd-navbar-top-panel rd-navbar-collapse">
                     <div class="rd-navbar-top-panel-inner">
                         <div class="left-side">
-                            <div class="group"><span class="text-italic">Follow Us:</span>
+                            <div class="group"><span class="text-italic">Seguinos en:</span>
                                 <ul class="list-inline">
                                     <li><a class="icon icon-sm icon-secondary-5 fa fa-instagram"
                                            href="https://www.instagram.com/posadadeloscerros"></a></li>
@@ -104,7 +111,7 @@
                                 <div class="unit unit-middle unit-horizontal unit-spacing-xs">
                                     <div class="unit__left"><span
                                             class="icon icon-primary text-middle mdi mdi-phone"></span></div>
-                                    <div class="unit__body"><a class="text-middle" href="tel:#">+1 (409) 987–5874</a>
+                                    <div class="unit__body"><a class="text-middle" href="https://wa.me/5492914420719">+54 9 291 442-0719 </a>
                                     </div>
                                 </div>
                             </div>
@@ -602,6 +609,44 @@
 <script src="js/core.min.js"></script>
 <script>
     document.getElementById("copyright-year").innerText = new Date().getFullYear();
+</script>
+<script>
+// js/wa-form.js
+document.addEventListener('DOMContentLoaded', function () {
+const form = document.querySelector('.hotel-booking-form form');
+if (!form) return;
+
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+
+const name = (document.getElementById('contact-first-name') || {}).value || '';
+const dateIn = (document.getElementById('date-in') || {}).value || '';
+const dateOut = (document.getElementById('date-out') || {}).value || '';
+const selects = form.querySelectorAll('select');
+const adults = (selects[0] && selects[0].value) ? selects[0].value : '1';
+const children = (selects[1] && selects[1].value) ? selects[1].value : '0';
+const phone = '5492914420719'; // quitar el + y espacios
+
+if (!name.trim()) {
+alert('Por favor ingrese su nombre.');
+return;
+}
+
+const messageLines = [
+`Consulta desde web - Posada de Los Cerros`,
+`Nombre: ${name.trim()}`,
+`Check-in: ${dateIn}`,
+`Check-out: ${dateOut}`,
+`Adultos: ${adults}`,
+`Niños: ${children}`
+];
+
+const text = encodeURIComponent(messageLines.join('\n'));
+const url = `https://wa.me/${phone}?text=${text}`;
+
+window.open(url, '_blank');
+});
+});
 </script>
 <script src="js/script.js"></script>
 <!--Coded by Drel-->
