@@ -2710,11 +2710,13 @@ dl {
 
 .post-box-minimal-caption {
 	background-color: #D8CDC5;
-	
+
 }
-.post-box-minimal-caption:hover{
-	background-color: #d1aa8b!important;
+
+.post-box-minimal-caption:hover {
+	background-color: #d1aa8b !important;
 }
+
 .post-box-minimal-title {
 	padding: 20px;
 }
@@ -34063,106 +34065,114 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	;
 	letter-spacing: 2px;
 }
- .footer {
-            padding: 60px 0 30px;
-            background-color: #2a2a2a;
-        }
 
-        .footer h5 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+.footer {
+	padding: 60px 0 30px;
+	background-color: #2a2a2a;
+}
 
-        .icon-text {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
+.footer h5 {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
 
-        .icon-text i {
-            font-size: 20px;
-            margin-right: 10px;
-            margin-top: 3px;
-            color: rgba(255,255,255,0.5);
-        }
+.icon-text {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15px;
+}
 
-        .text-white-05 {
-            color: rgba(255,255,255,0.5);
-        }
+.icon-text i {
+	font-size: 20px;
+	margin-right: 10px;
+	margin-top: 3px;
+	color: rgba(255, 255, 255, 0.5);
+}
 
-        .list-marked {
-            list-style: none!important;
-            padding-left: 0;
-        }
+.text-white-05 {
+	color: rgba(255, 255, 255, 0.5);
+}
 
-        .list-marked li {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 8px;
-        }
+.list-marked {
+	list-style: none !important;
+	padding-left: 0;
+}
 
-        .list-marked li:before {
-            position: absolute;
-            left: 0;
-            color: rgba(255,255,255,0.5);
-        }
+.list-marked li {
+	position: relative;
+	padding-left: 18px;
+	margin-bottom: 8px;
+}
 
-        .list-inline {
-            display: flex;
-            list-style: none;
-            padding-left: 0;
-            gap: 10px;
-        }
+.list-marked li:before {
+	position: absolute;
+	left: 0;
+	color: rgba(255, 255, 255, 0.5);
+}
 
-        .icon-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
+.list-inline {
+	display: flex;
+	list-style: none;
+	padding-left: 0;
+	gap: 10px;
+}
 
-        .icon-circle:hover {
-            background: #8f859e;
-        }
+.icon-circle {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.3s;
+}
 
-        .divider-gray {
-            height: 1px;
-            background: rgba(255,255,255,0.1);
-            margin: 10px 0;
-        }
+.icon-circle:hover {
+	background: #8f859e;
+}
 
-.mapa{
+.divider-gray {
+	height: 1px;
+	background: rgba(255, 255, 255, 0.1);
+	margin: 10px 0;
+}
+
+.mapa {
 	margin-top: 20px;
 }
-	
- .cabanas-cards-section {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); 
-      grid-template-rows: repeat(2, auto);  
-      gap: 2em;                             
-      justify-items: center;                
-      align-items: center;                  
-      padding: 2em;
-    }
 
-    .amenity-card {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background-color: #D8CDC5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-weight: 500;
-      
-    }
-.brand-name{
+.cabanas-cards-section {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, auto);
+	gap: 2em;
+	justify-items: center;
+	align-items: center;
+	padding: 2em;
+}
+
+.amenity-card {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: #D8CDC5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-weight: 500;
+
+}
+
+.brand-name {
 	font-size: 48px;
 	font-weight: 500;
 	color: #000000;
+}
+
+.amenity-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
