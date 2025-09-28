@@ -3148,7 +3148,7 @@ dl {
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
-	width: auto;
+	width: inherit;
 	height: auto;
 	max-width: none;
 	min-width: 101.5%;
