@@ -10,8 +10,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css"
-          href="//fonts.googleapis.com/css?family=Lato:400,700,400italic%7CPoppins:300,400,500,700">
+
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <style>.ie-panel {
@@ -46,40 +45,31 @@
 <div class="text-center page">
     <!-- Page preloader-->
     <div class="page-loader">
-        <div>
-            <div class="page-loader-body">
-                <div class="loader">
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
+        <div class="page-loader-body">
+            <div class="cabin-loader">
+                <!-- Techo -->
+                <div class="roof"></div>
+
+                <!-- Cabaña -->
+                <div class="cabin">
+                    <div class="window left"></div>
+                    <div class="window right"></div>
                     <div class="door"></div>
-                    <div class="hotel-sign"><span>H</span><span>O</span><span>T</span><span>E</span><span>L</span></div>
+                </div>
+
+                <!-- Chimenea -->
+                <div class="chimney">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
+            <p class="text-center">Cargando...</p>
+
         </div>
     </div>
+
+
     <!-- Page Header-->
     <header class="page-header" style="padding-bottom: 24px">
         <!-- RD Navbar-->
@@ -196,8 +186,8 @@
                                             <div class="slider-subtitle-group">
                                                 <div class="decoration-line" data-caption-animate="slideInDown"
                                                      data-caption-delay="400"></div>
-                                                <h2 data-caption-animate="slideInLeft" data-caption-delay="700">Relajate
-                                                    y disfrutá</h2>
+                                                <p class="h2 text-white" data-caption-animate="slideInLeft" data-caption-delay="700">Relajate
+                                                    y disfrutá</p>
                                             </div>
                                             <a class="button button-effect-ujarak button-lg button-white-outline button-square"
                                                href="about-us.html" data-caption-animate="slideInLeft"
@@ -610,6 +600,7 @@
 <script>
     document.getElementById("copyright-year").innerText = new Date().getFullYear();
 </script>
+
 <script>
 // js/wa-form.js
 document.addEventListener('DOMContentLoaded', function () {

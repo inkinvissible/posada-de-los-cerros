@@ -693,16 +693,18 @@ $(function () {
 	 * Page loader
 	 * @description Enables Page loader
 	 */
-	if (plugins.pageLoader.length > 0) {
-		$window.on("load", function () {
-			var loader = setTimeout(function () {
-				plugins.pageLoader.addClass("loaded");
-				$window.trigger("resize");
-			}, 1000);
-		});
-	}
+    window.addEventListener("load", () => {
+        const loader = document.querySelector(".page-loader");
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add("loaded");
+            }, 1000); // espera 1s antes de desaparecer
+        }
+    });
 
-	/**
+
+
+    /**
 	 * validateReCaptcha
 	 * @description  validate google reCaptcha
 	 */
