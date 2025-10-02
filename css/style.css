@@ -34015,3 +34015,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	flex-direction: column;
 	align-items: center;
 }
+
+@media (max-width: 767px) {
+	.cabanas-cards-section{
+		display: flex;
+		flex-direction: column;
+	}
+}
