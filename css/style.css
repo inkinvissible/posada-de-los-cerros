@@ -34022,3 +34022,19 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 		flex-direction: column;
 	}
 }
+
+/* Disable touch events on swiper slider for mobile devices */
+@media (max-width: 991px) {
+	.swiper-container,
+	.swiper-wrapper,
+	.swiper-slide {
+		pointer-events: none;
+		touch-action: pan-y;
+	}
+	
+	.swiper-container .swiper-slide-caption,
+	.swiper-container .button,
+	.swiper-container a {
+		pointer-events: auto;
+	}
+}
