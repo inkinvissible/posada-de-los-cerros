@@ -34005,6 +34005,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .brand-name {
+    font-family: "Playfair Display", sans-serif;
 	font-size: 48px;
 	font-weight: 500;
 	color: #000000;
